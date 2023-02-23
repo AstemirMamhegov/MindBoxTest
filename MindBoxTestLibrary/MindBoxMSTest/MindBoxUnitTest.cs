@@ -1,4 +1,4 @@
-using MindBoxTestLibraryClass;
+using MindBoxLibraryClass;
 using MindBoxTestConsoleClass;
 using System.Runtime.InteropServices;
 

@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MindBoxTestLibraryClass", "MindBoxTestLibraryClass\MindBoxTestLibraryClass.csproj", "{73F86771-FFA0-4515-93BB-7455F8808F1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MindBoxLibraryClass", "MindBoxTestLibraryClass\MindBoxLibraryClass.csproj", "{73F86771-FFA0-4515-93BB-7455F8808F1E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MindBoxTestConsole", "MindBoxTestConsole\MindBoxTestConsole.csproj", "{B2425FBA-3B04-4A6E-B271-BC1E9BEA00FE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MindBoxMSTest", "MindBoxMSTest\MindBoxMSTest.csproj", "{BCA7DF32-2B0F-4FC4-964F-220EB87A364F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MindBoxLibrary", "MindBoxLibrary", "{148749C4-0D60-4377-8327-6B555DA096A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MindBoxUnitTest", "MindBoxUnitTest", "{3E5099F3-60D3-4504-BDAB-83A0775C6042}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BCA7DF32-2B0F-4FC4-964F-220EB87A364F} = {3E5099F3-60D3-4504-BDAB-83A0775C6042}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B823B260-8CA4-4287-A72F-F3DE11564811}

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using MindBoxTestLibraryClass;
+using MindBoxLibraryClass;
 
 namespace MindBoxTestConsoleClass
 {

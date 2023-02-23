@@ -11,8 +11,8 @@
           "MSTest.TestAdapter": "2.2.8",
           "MSTest.TestFramework": "2.2.8",
           "Microsoft.NET.Test.Sdk": "17.1.0",
+          "MindBoxLibraryClass": "1.0.0",
           "MindBoxTestConsole": "1.0.0",
-          "MindBoxTestLibraryClass": "1.0.0",
           "coverlet.collector": "3.1.2"
         },
         "runtime": {
@@ -1078,17 +1078,17 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "MindBoxLibraryClass/1.0.0": {
+        "runtime": {
+          "MindBoxLibraryClass.dll": {}
+        }
+      },
       "MindBoxTestConsole/1.0.0": {
         "dependencies": {
-          "MindBoxTestLibraryClass": "1.0.0"
+          "MindBoxLibraryClass": "1.0.0"
         },
         "runtime": {
           "MindBoxTestConsole.dll": {}
-        }
-      },
-      "MindBoxTestLibraryClass/1.0.0": {
-        "runtime": {
-          "MindBoxTestLibraryClass.dll": {}
         }
       }
     }
@@ -1715,12 +1715,12 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "MindBoxTestConsole/1.0.0": {
+    "MindBoxLibraryClass/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "MindBoxTestLibraryClass/1.0.0": {
+    "MindBoxTestConsole/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

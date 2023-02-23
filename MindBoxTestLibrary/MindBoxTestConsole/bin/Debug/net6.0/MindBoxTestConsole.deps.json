@@ -8,15 +8,15 @@
     ".NETCoreApp,Version=v6.0": {
       "MindBoxTestConsole/1.0.0": {
         "dependencies": {
-          "MindBoxTestLibraryClass": "1.0.0"
+          "MindBoxLibraryClass": "1.0.0"
         },
         "runtime": {
           "MindBoxTestConsole.dll": {}
         }
       },
-      "MindBoxTestLibraryClass/1.0.0": {
+      "MindBoxLibraryClass/1.0.0": {
         "runtime": {
-          "MindBoxTestLibraryClass.dll": {}
+          "MindBoxLibraryClass.dll": {}
         }
       }
     }
@@ -27,7 +27,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "MindBoxTestLibraryClass/1.0.0": {
+    "MindBoxLibraryClass/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
