@@ -6,31 +6,20 @@ using System.Threading.Tasks;
 
 namespace MindBoxTestLibraryClass
 {
-    public class Circle : Figure
+    public class Circle : ICanCalculateMyArea
     {
-        public double radius;
+        public readonly double Radius;
 
         public Circle(double radius)
         {
             if (radius < 0) throw new ArgumentException("radius less zero");
-            this.radius = radius;
+            this.Radius = radius;
         }
 
-        public override double AreaCount()
+        public double CalculateArea()
         {
-                if (radius < 0)
-                {
-                    Console.WriteLine("Радиус не может быть отрицательным");
-                    return 0;
-                }
-                else
-                {
-                    // Вычисление площади
-                    double areaResult = Math.PI * Math.Pow(radius, 2);
-                    return areaResult;
-                }
+            double areaResult = Math.PI * Math.Pow(Radius, 2);
+            return areaResult;
         }
-
-
     }
 }

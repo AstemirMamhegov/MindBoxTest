@@ -9,84 +9,65 @@ namespace MindBoxMSTest
     {
         //Тесты на треугольник
         [TestMethod]
-        public void TriangleArea1()
+        public void TriangleIsRight()
         {
-            // arrange
+            Triangle triangle;
+            triangle = new Triangle(3,3,3);
+            Assert.AreEqual(false, triangle.IsRight());
             
-            double triangleA = 3;
-            double triangleB = 5;
-            double triangleC = 7;
-            double expented = 6.49519052838329;
-            var library = new Triangle(triangleA,triangleB,triangleC);
-            // act
-            double result = Convert.ToDouble(library.AreaCount()) ;
-
-            // assert
-            Assert.AreEqual(expented, result);
+            triangle = new Triangle(3,4,5);
+            Assert.AreEqual(true, triangle.IsRight());
         }
 
-        [TestMethod]
-        public void TriangleArea2()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="mustThrow">должен ли action выбросить ожидаемое исключение</param>
+        /// <typeparam name="T">тип ожидаемого исключения</typeparam>
+        /// <exception cref="AssertFailedException"></exception>
+        public void ThrowIfException<T>(Action action, bool mustThrow)
         {
-            // Проверка на большие числа
-            // arrange
-            
-            double triangleA = Double.MaxValue;
-            double triangleB = Double.MaxValue;
-            double triangleC = Double.MaxValue;
-            //double expented = 53326.82251925385;
-            var library = new Triangle(triangleA, triangleB, triangleC);
-            // act
             try
             {
-                double result = Convert.ToDouble(library.AreaCount());
+                action();
             }
-            catch (OverflowException ex)
+            catch (Exception e)
             {
-                //все ок если поймали OverflowException
+                if (e is T)
+                {
+                    return;
+                }
 
+                throw new AssertFailedException("Выброшено неожидаемое исключение", e);
             }
-            // assert что будет исключение на большие числа
-            //OverflowException
-            //Assert.AreEqual(expented, result);
+
+            if (mustThrow == true)
+            {
+                throw new AssertFailedException("ожидаемое исколючение не выброшено");
+            }
         }
-
-
+        
         [TestMethod]
-        public void TriangleArea8()
+        public void TriangleCreationException()
         {
-            //Проверка на дробные значения
-            // arrange
-            //var library = new TestLibrary();
-            //double triangleA = 3.78;
-            //double triangleB = 5.69;
-            //double triangleC = 4.798;
-            //double expented = 8.983965954756508;
-
-            //// act
-            //double result = Convert.ToDouble(library.TriangleArea(triangleA, triangleB, triangleC));
-
-            //// assert
-            //Assert.AreEqual(expented - result < 0.01);
+            //корректно
+            ThrowIfException<ArgumentException>(() => new Triangle(3, 4, 5), false);
+            ThrowIfException<ArgumentException>(() => new Triangle(3, 3, 3), false);
+            
+            //неправильное соотношение сторон
+            ThrowIfException<ArgumentException>(() => new Triangle(1, 2, 5), true);
+            
+            //неправильные стороны
+            ThrowIfException<ArgumentException>(() => new Triangle(-3, 3, 3), false);
         }
-
-        //[TestMethod]
-        //public void TriangleArea9()
-        //{
-        //    //Проверка на отрицательную сторону
-        //    // arrange
-        //    var library = new TestLibrary();
-        //    double triangleA = -3.78;
-        //    double triangleB = 5.69;
-        //    double triangleC = 4.798;
-        //    double expented = 0;
-
-        //    // act
-        //    double result = Convert.ToDouble(library.TriangleArea(triangleA, triangleB, triangleC));
-
-        //    // assert
-        //    Assert.AreEqual(expented, result);
-        //}
+        
+        [TestMethod]
+        public void TriangleArea()
+        {
+            Assert.AreEqual(new Triangle(3,4,5).CalculateArea(), 6);
+            
+        }
 
         //Тесты на круг
         [TestMethod]
@@ -118,5 +99,37 @@ namespace MindBoxMSTest
 
             // assert
         }
+
+        [TestMethod]
+        public void FiguresAreaCalculatorException()
+        {
+            ThrowIfException<Exception>(() => FiguresAreaCalculator.CalculateArea(new object()), true);
+            ThrowIfException<Exception>(() => FiguresAreaCalculator.CalculateArea(new bool()), true);
+            ThrowIfException<Exception>(() => FiguresAreaCalculator.CalculateArea(new Stack<bool>()), true);
+            
+            //CalculateArea(object figure)
+            ThrowIfException<Exception>(() => FiguresAreaCalculator.CalculateArea((object) new Triangle(3,3,3)), false);
+            ThrowIfException<Exception>(() => FiguresAreaCalculator.CalculateArea((object) new Rectangle(5, 5)), false);
+            ThrowIfException<Exception>(() => FiguresAreaCalculator.CalculateArea((object) new Circle(5)), false);
+            
+            //CalculateArea<T>(T figure) where T : ICanCalculateMyArea
+            ThrowIfException<Exception>(() => FiguresAreaCalculator.CalculateArea(new Triangle(3,3,3)), false);
+            ThrowIfException<Exception>(() => FiguresAreaCalculator.CalculateArea(new Rectangle(5, 5)), false);
+            ThrowIfException<Exception>(() => FiguresAreaCalculator.CalculateArea(new Circle(5)), false);
+        }
+        
+        [TestMethod]
+        public void CalculateAreaRuntime()
+        {
+            var triangle = new Triangle(3, 4, 5);
+            var rectangle = new Rectangle(5, 5);
+            var circle = new Circle(5);
+
+            Assert.AreEqual(6, FiguresAreaCalculator.CalculateArea(triangle));
+            Assert.AreEqual(25, FiguresAreaCalculator.CalculateArea(rectangle));
+            Assert.AreEqual(78.5, FiguresAreaCalculator.CalculateArea(circle),  1);
+        }
+
+            
     }
 }
