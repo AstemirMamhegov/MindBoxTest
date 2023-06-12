@@ -12,7 +12,7 @@ namespace MindBoxTestLibraryClass
 
         public Circle(double radius)
         {
-            if (radius < 0) throw new ArgumentException("radius less zero");
+            if (radius <= 0) throw new ArgumentException("radius less zero");
             this.Radius = radius;
         }
 

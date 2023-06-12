@@ -17,6 +17,7 @@ namespace MindBoxTestLibraryClass
             this.SideA = sideA;
             this.SideB = sideB;
             this.SideC = sideC;
+
             //проверка входных данных в конструкторе
             if (sideA <= 0) throw new ArgumentException("sideA less zero");
             if (sideC <= 0) throw new ArgumentException("sideC less zero");

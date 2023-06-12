@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MindBoxTestLibraryClass;
 
@@ -11,6 +12,7 @@ public static class FiguresAreaCalculator
 	}
 	
 	public static readonly Type InterfaceCanCalculateMyAreaType = typeof(ICanCalculateMyArea);
+
 	public static double CalculateArea(object figure)
 	{
 		Type figureType = figure.GetType();
@@ -24,13 +26,13 @@ public static class FiguresAreaCalculator
 				var result = (double?) calculateAreaMethodInfo.Invoke(figure, null);
 				if (result is null)
 				{
-					throw new Exception($"статический метод ({InterfaceCanCalculateMyAreaType.FullName}.{calculateAreaMethodInfo.Name}) возвратил null при передаче в него фигуры типа {figureType.FullName}");
+					throw new ReturnedNullException(calculateAreaMethodInfo, figureType);
 				}
 				return result.Value;
 			}
 		}
 
-		throw new Exception(
-			$"Переданная фигура типа {figureType.FullName} не реализует интерфейс {InterfaceCanCalculateMyAreaType.FullName}");
+		throw new InterfaceNotImplementedException(InterfaceCanCalculateMyAreaType, figureType);
+
 	}
 }
