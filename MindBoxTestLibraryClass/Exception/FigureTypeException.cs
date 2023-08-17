@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MindBoxTestLibraryClass
+namespace MindBoxTestLibraryClass.Exception
 {
     public class InterfaceNotImplementedException : Exception
     {
-        public InterfaceNotImplementedException(Type interfaceType, Type objectType) 
+        public InterfaceNotImplementedException(Type interfaceType, Type objectType)
         {
 
         }

@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MindBoxTestLibraryClass
+namespace MindBoxTestLibraryClass.Exception
 {
     public class ReturnedNullException : Exception
     {

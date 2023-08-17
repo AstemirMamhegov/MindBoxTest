@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MindBoxTestLibraryClass
+namespace MindBoxTestLibraryClass.FigureType
 {
     public class Circle : ICanCalculateMyArea
     {
@@ -13,7 +13,7 @@ namespace MindBoxTestLibraryClass
         public Circle(double radius)
         {
             if (radius <= 0) throw new ArgumentException("radius less zero");
-            this.Radius = radius;
+            Radius = radius;
         }
 
         public double CalculateArea()

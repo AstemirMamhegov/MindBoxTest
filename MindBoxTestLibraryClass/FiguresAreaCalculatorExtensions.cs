@@ -1,3 +1,5 @@
+using MindBoxTestLibraryClass.FigureType;
+
 namespace MindBoxTestLibraryClass;
 
 public static class FiguresAreaCalculatorExtensions
